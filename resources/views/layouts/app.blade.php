@@ -2,12 +2,14 @@
 <html lang="en">
 
 <head>
-    <title>@yield('title', 'Dashboard')</title>
+    <title>{{config('app.name', 'Zenig')}}</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <link href="{{ asset('vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/fullcalendar/css/main.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('//cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css')}}">
+    <link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css')}}"
+        rel="stylesheet" />
 </head>
 
 
@@ -21,14 +23,14 @@
     <div id="main-wrapper">
         <div class="nav-header">
             <a href="{{ url('/') }}" class="brand-logo">
-                <svg class="logo-abbr" width="55" height="55" viewBox="0 0 55 55" fill="none"
+                <!-- <svg class="logo-abbr" width="55" height="55" viewBox="0 0 55 55" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M27.5 0C12.3122 0 0 12.3122 0 27.5C0 42.6878 12.3122 55 27.5 55C42.6878 55 55 42.6878 55 27.5C55 12.3122 42.6878 0 27.5 0ZM28.0092 46H19L19.0001 34.9784L19 27.5803V24.4779C19 14.3752 24.0922 10 35.3733 10V17.5571C29.8894 17.5571 28.0092 19.4663 28.0092 24.4779V27.5803H36V34.9784H28.0092V46Z"
                         fill="url(#paint0_linear)" />
-                </svg>
+                </svg> -->
                 <div class="brand-title">
-                    <h4>Zenig Auto</h4>
+                    <h4 class="m-0 p-0"><b>Zenig Auto</b></h4>
                 </div>
             </a>
             <div class="nav-control">
@@ -127,9 +129,13 @@
                             <span class="nav-text">Database</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li class=""><a href="{{ route('area.level.index') }}">Area Level</a></li>
-                            <li class=""><a href="">Area Rack</a></li>
-                            <li class=""><a href="">Area</a></li>
+                            <li class="area_level"><a href="{{ route('area.level.index') }}">Area Level</a></li>
+                            <li class=""><a href="{{ route('area.rack.index') }}">Area Rack</a></li>
+                            <li class=""><a href="{{ route('area.index') }}">Area</a></li>
+                            <li class=""><a href="{{ route('type.index') }}">Type</a></li>
+                            <li class=""><a href="{{ route('process.index') }}">Process</a></li>
+                            <li class=""><a href="{{ route('tonage.index') }}">Tonage</a></li>
+                            <li class=""><a href="{{ route('machine.index') }}">Machine</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -138,7 +144,33 @@
 
         <div class="content-body default-height">
             <!-- Content starts here -->
-            <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        @if($errors && count($errors) > 0)
+                            <div class="alert alert-danger" role="alert">
+                                @foreach ($errors->all() as $error)
+                                    <ul>
+                                        <li>{{$loop->iteration}} : {!! $error !!}</li>
+                                    </ul>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xl-12">
                         @yield('content')
@@ -161,6 +193,7 @@
     <script src="{{ asset('js/styleSwitcher.js') }}"></script>
     <script src="{{ asset('//cdn.datatables.net/2.2.1/js/dataTables.min.js')}}"></script>
     <script src="{{asset('https://cdn.jsdelivr.net/npm/sweetalert2@11')}}"></script>
+
 
     @stack('scripts')
 </body>

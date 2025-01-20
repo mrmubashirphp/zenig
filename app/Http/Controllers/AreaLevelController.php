@@ -69,6 +69,6 @@ class AreaLevelController extends Controller
     public function view($id)
     {
         $arealevel = AreaLevel::find($id);
-        return view('area-level.edit', ['arealevel' => $arealevel]);
+        return view('area-level.view', ['arealevel' => $arealevel]);
     }
 }

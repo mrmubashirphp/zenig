@@ -19,12 +19,18 @@
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control" value="{{$arealevel->name}}" name="name" id="">
                                 </div>
+                                @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="code">Code</label>
                                     <input type="text" class="form-control" name="code" value="{{$arealevel->code}}" id="">
                                 </div>
+                                @error('code')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row mt-5">

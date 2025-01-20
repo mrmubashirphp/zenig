@@ -4,12 +4,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -69,7 +63,7 @@
 @endsection
 
 @push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize DataTable

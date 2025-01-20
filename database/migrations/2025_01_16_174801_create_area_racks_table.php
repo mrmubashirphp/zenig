@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('code');
-            $table->unsignedBigInteger('arealevel_id');
-            $table->foreign('arealevel_id')->references('id')->on('area_levels');
+            $table->string('arealevels');
             $table->timestamps();
         });
     }

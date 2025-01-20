@@ -18,12 +18,18 @@
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control" name="name" value="{{old('name')}}" id="">
                                 </div>
+                                @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="code">Code</label>
                                     <input type="text" class="form-control" name="code" value="{{old('code')}}" id="">
                                 </div>
+                                @error('code')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row mt-5">

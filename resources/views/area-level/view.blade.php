@@ -6,20 +6,20 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Area Level Edit</h4>
+                    <h4>Area Level View</h4>
                 </div>
                 <div class="card-body">
                     <div class="row my-4">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" value="{{$arealevel->name}}" name="name" id="">
+                                <input type="text" class="form-control" value="{{$arealevel->name}}" name="name" id="" disabled>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="code">Code</label>
-                                <input type="text" class="form-control" name="code" value="{{$arealevel->code}}" id="">
+                                <input type="text" class="form-control" name="code" value="{{$arealevel->code}}" id="" disabled>
                             </div>
                         </div>
                     </div>
