@@ -23,7 +23,7 @@
         <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
-                    <th>Sr</th>
+                    <th class="text-start">Sr</th>
                     <th>Type</th>
                     <th class="text-start">Action</th>
                 </tr>
@@ -31,7 +31,7 @@
             <tbody>
                 @foreach ($types as $type)
                     <tr>
-                        <td>{{$loop->iteration}}</td>
+                        <td class="text-start">{{$loop->iteration}}</td>
                         <td>{{$type->type}}</td>
                         <td class="text-start">
                             <a href="{{route('type.edit',$type->id)}}" class="btn btn-primary btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>

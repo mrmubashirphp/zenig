@@ -16,7 +16,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="tonage">Name</label>
-                                    <input type="text" class="form-control" name="tonage" value="{{old('tonage')}}" id="">
+                                    <input type="text" class="form-control" name="tonage" value="{{old('tonage')}}"
+                                        id="">
                                 </div>
                                 @error('tonage')
                                     <div class="text-danger">{{ $message }}</div>
@@ -24,14 +25,18 @@
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="col-sm-2 float-start">
-                                <a class="btn btn-primary" href="{{route('tonage.index')}}"><i
-                                        class="fa-solid fa-circle-arrow-left px-2"></i> Back</a>
-                            </div>
-                            <div class="col-sm-1 offset-9">
-                                <button class="btn btn-primary" type="submit">Save</button>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <a class="btn btn-primary" href="{{route('tonage.index')}}">
+                                        <i class="fa-solid fa-circle-arrow-left px-2"></i> Back
+                                    </a>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary" type="submit">Save</button>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </form>
             </div>
