@@ -22,7 +22,7 @@
                     <table class="table table-bordered" id="myTable">
                         <thead>
                             <tr>
-                                <th>Sr</th>
+                                <th class="text-start">Sr</th>
                                 <th>Name</th>
                                 <th>Code</th>
                                 <th>Department</th>
@@ -33,7 +33,7 @@
                         <tbody>
                             @foreach ($areas as $area)
                                 <tr>
-                                    <td>{{$loop->iteration}}</td>
+                                    <td class="text-start">{{$loop->iteration}}</td>
                                     <td>{{$area->name}}</td>
                                     <td>{{$area->code}}</td>
                                     <td>{{$area->department}}</td>

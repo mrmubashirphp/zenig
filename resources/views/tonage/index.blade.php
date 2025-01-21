@@ -23,7 +23,7 @@
         <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
-                    <th>Sr</th>
+                    <th class="text-start">Sr</th>
                     <th>Tonage</th>
                     <th class="text-start">Action</th>
                 </tr>
@@ -31,7 +31,7 @@
             <tbody>
                 @foreach ($tonages as $tonage)
                     <tr>
-                        <td>{{$loop->iteration}}</td>
+                        <td class="text-start">{{$loop->iteration}}</td>
                         <td>{{$tonage->tonage}}</td>
                         <td class="text-start">
                             <a href="{{route('tonage.edit', $tonage->id)}}" class="btn btn-primary btn-xs sharp me-1"><i

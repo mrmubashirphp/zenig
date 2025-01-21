@@ -21,9 +21,9 @@
                 <table class="table table-bordered" id="myTable">
                     <thead>
                         <tr>
-                            <th>Sr</th>
+                            <th class="text-start">Sr</th>
                             <th>Name</th>
-                            <th>Code</th>
+                            <th class="text-start">Code</th>
                             <th>Tonage</th>
                             <th>Category</th>
                             <th class="text-start">Action</th>
@@ -32,9 +32,9 @@
                     <tbody>
                         @foreach ($machines as $machine)
                                                 <tr>
-                                                    <td>{{$loop->iteration}}</td>
+                                                    <td class="text-start">{{$loop->iteration}}</td>
                                                     <td>{{$machine->name}}</td>
-                                                    <td>{{$machine->code}}</td>
+                                                    <td class="text-start">{{$machine->code}}</td>
                                                     @php
                                                         $ids = json_decode($machine->tonage);
                                                         $tonages = App\Models\Tonage::whereIn('id', $ids)->get();
