@@ -6,6 +6,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchasePriceController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TypeOfProductController;
 use App\Http\Controllers\UnitController;
@@ -30,6 +31,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware('auth')->group(function () {
+
+//START MUBASHIR
+
 
     //AREA LEVEL 
     Route::get('/area-level/index', [AreaLevelController::class, 'index'])->name('area.level.index');
@@ -101,8 +105,21 @@ Route::middleware('auth')->group(function () {
     Route::put('/machine/update/{id}', [MachineController::class, 'update'])->name('machine.update'); 
     Route::delete('/machine/destroy/{id}', [MachineController::class, 'destroy'])->name('machine.destroy');
     Route::get('/machine/view/{id}', [MachineController::class, 'view'])->name('machine.view');
-
     
+    
+    //PVD
+    Route::get('/erp/pvd/purchase-price/index', [PurchasePriceController::class, 'index'])->name('pvd.purchase-price.index');
+
+
+//END MUBASHIR
+
+
+
+
+
+
+
+
 
     // zulqarnain
 

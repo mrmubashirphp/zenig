@@ -146,17 +146,90 @@
                             <li><a href="{{ route('setting.type_of_product.index') }}">Type of Product</a></li>
                         </ul>
                     </li>
+                    <h5 class="m-0 ps-4 py-2 bg-primary">ERP</h5>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class="fas fa-database"></i>
-                            <span class="nav-text">Administration</span>
+                            <i class=""></i> 
+                            <span class="nav-text">BD</span>
                         </a>
                         <ul aria-expanded="false">
-                        <li class="area_level"><a href="{{ url('staff') }}">User</a></li>
-                            <li class="area_level"><a href="{{ url('departments') }}">Department</a></li>
-                            <li class=""><a href="{{ url('designations') }}">Designation</a></li>
-                          
+                            <li class=""><a href="">Quotation</a></li>
+                            <li class=""><a href="">Order</a></li>
+                            <li class=""><a href="">Sales Price</a></li>
+                            <li class=""><a href="">Invoice</a></li>
                         </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class=""></i> 
+                            <span class="nav-text">PVD</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="{{route('pvd.purchase-price.index')}}">Purchase Price</a></li>
+                            <li class=""><a href="">Purchase Planning</a></li>
+                            <li class=""><a href="">Purchase Requisition</a></li>
+                            <li class=""><a href="">Purchase Order</a></li>
+                            <li class=""><a href="">Purchase Ranking List</a></li>
+                        </ul>
+                    </li>
+                    <h5 class="m-0 ps-4 py-2 bg-primary">MES</h5>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class=""></i> 
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">Machine Status</a></li>
+                            <li class=""><a href="">Shopfloor</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class=""></i> 
+                            <span class="nav-text">Engineering</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">BOM</a></li>
+                            <li class=""><a href="">BOM Report</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class=""></i> 
+                            <span class="nav-text">PPC</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">Monthly Production Planning</a></li>
+                            <li class=""><a href="">Daily Production Planning</a></li>
+                            <li class=""><a href="">Scheduling</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class=""></i> 
+                            <span class="nav-text">Production</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">Monthly Production Output</a></li>
+                            <li class=""><a href="">Summary Report</a></li>
+                            <li class=""><a href="">Call for Assistance</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class=""></i> 
+                            <span class="nav-text">OEE</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">OEE Report</a></li>
+                        </ul>
+                    </li>
+                    <h5 class="m-0 ps-4 py-2 bg-primary">WMS</h5>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class=""></i> 
+                            <span class="nav-text">Dashboard</span>
+                        </a>
                     </li>
                 </ul>
             </div>
