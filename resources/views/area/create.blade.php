@@ -62,7 +62,7 @@
                         </div>
                         <div class="row mt-5">
                             <div class="col-sm-2 float-start">
-                                <a class="btn btn-primary" href="{{route('area.rack.index')}}"><i
+                                <a class="btn btn-primary" href="{{route('area.index')}}"><i
                                         class="fa-solid fa-circle-arrow-left px-2"></i> Back</a>
                             </div>
                             <div class="col-sm-1 offset-9">
