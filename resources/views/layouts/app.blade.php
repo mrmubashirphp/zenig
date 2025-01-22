@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>{{config('app.name', 'Zenig')}}</title>
+    <title>{{ config('app.name', 'Zenig') }}</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <link href="{{ asset('vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/fullcalendar/css/main.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('//cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css')}}">
-    <link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css')}}"
+    <link rel="stylesheet" href="{{ asset('//cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css') }}">
+    <link href="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css') }}"
         rel="stylesheet" />
 </head>
 
@@ -78,7 +78,8 @@
                                                     stroke-linejoin="round">
                                                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                                     <polyline points="16 17 21 12 16 7"></polyline>
-                                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                                    <line x1="21" y1="12" x2="9" y2="12">
+                                                    </line>
                                                 </svg>
                                                 <span class="ms-2">Logout</span>
                                             </button>
@@ -86,8 +87,9 @@
                                     @else
                                         <a href="{{ route('login') }}" class="dropdown-item ai-icon">
                                             <svg id="icon-login" xmlns="http://www.w3.org/2000/svg" class="text-primary"
-                                                width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
                                                 <path d="M12 21v-6"></path>
                                                 <polyline points="19 14 12 21 5 14"></polyline>
                                                 <line x1="12" y1="3" x2="12" y2="15"></line>
@@ -104,7 +106,7 @@
                 </nav>
             </div>
         </div>
-
+     
         <div class="dlabnav">
             <div class="dlabnav-scroll">
                 <ul class="metismenu" id="menu">
@@ -138,6 +140,20 @@
                             <li class=""><a href="{{ route('machine.index') }}">Machine</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#" class="has-arrow" aria-expanded="false">
+                            <i class="fas fa-box"></i>
+                            <span class="nav-text">Product</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('setting.product.index') }}">Product</a></li>
+                            <li><a href="{{ route('setting.supplier.index') }}">Supplier</a></li>
+                            <li><a href="{{ route('setting.customer.index') }}">Customer</a></li>
+                            <li><a href="{{ route('setting.category.index') }}">Category</a></li>
+                            <li><a href="{{ route('setting.unit.index') }}">Unit</a></li>
+                            <li><a href="{{ route('setting.type_of_product.index') }}">Type of Product</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -150,21 +166,23 @@
                         @if (session('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session('success') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
                             </div>
                         @endif
                         @if (session('error'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 {{ session('error') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
                             </div>
                         @endif
 
-                        @if($errors && count($errors) > 0)
+                        @if ($errors && count($errors) > 0)
                             <div class="alert alert-danger" role="alert">
                                 @foreach ($errors->all() as $error)
                                     <ul>
-                                        <li>{{$loop->iteration}} : {!! $error !!}</li>
+                                        <li>{{ $loop->iteration }} : {!! $error !!}</li>
                                     </ul>
                                 @endforeach
                             </div>
@@ -181,7 +199,7 @@
     </div>
 
 
-    <script src="{{ asset('assets/js/plugins/jquery.min.js')}}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/global/global.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('vendor/fullcalendar/js/main.min.js') }}"></script>
@@ -191,8 +209,8 @@
     <script src="{{ asset('js/dlabnav-init.js') }}"></script>
     <script src="{{ asset('js/demo.js') }}"></script>
     <script src="{{ asset('js/styleSwitcher.js') }}"></script>
-    <script src="{{ asset('//cdn.datatables.net/2.2.1/js/dataTables.min.js')}}"></script>
-    <script src="{{asset('https://cdn.jsdelivr.net/npm/sweetalert2@11')}}"></script>
+    <script src="{{ asset('//cdn.datatables.net/2.2.1/js/dataTables.min.js') }}"></script>
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
 
 
     @stack('scripts')
