@@ -138,14 +138,6 @@
                             <li class=""><a href="{{ route('process.index') }}">Process</a></li>
                             <li class=""><a href="{{ route('tonage.index') }}">Tonage</a></li>
                             <li class=""><a href="{{ route('machine.index') }}">Machine</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="has-arrow" aria-expanded="false">
-                            <i class="fas fa-box"></i>
-                            <span class="nav-text">Product</span>
-                        </a>
-                        <ul aria-expanded="false">
                             <li><a href="{{ route('setting.product.index') }}">Product</a></li>
                             <li><a href="{{ route('setting.supplier.index') }}">Supplier</a></li>
                             <li><a href="{{ route('setting.customer.index') }}">Customer</a></li>
