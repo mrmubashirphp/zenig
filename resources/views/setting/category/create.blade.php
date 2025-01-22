@@ -7,12 +7,19 @@
       
       <form action="{{ route('setting.category.store') }}" method="post">
         @csrf
-        <label>Name</label></br>
-        <input type="text" name="name" id="name" class="form-control"></br>
-        <label>Code</label></br>
-        <input type="text" name="code" id="code" class="form-control"></br>
+        <div class="row g-3 align-items-center">
+          <div class="col-md-4">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" name="name" id="name" class="form-control">
+          </div>
+          <div class="col-md-4 ">
+              <label for="code" class="form-label">Code</label>
+              <input type="text" name="code" id="code" class="form-control">
+          </div>
+      </div>
       
-        <input type="submit" value="Save" class="btn btn-success"></br>
+      
+        <input type="submit" value="Save" class="btn btn-success m-3"></br>
     </form>
    
   </div>
