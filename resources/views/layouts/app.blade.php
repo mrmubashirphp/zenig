@@ -146,6 +146,18 @@
                             <li><a href="{{ route('setting.type_of_product.index') }}">Type of Product</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fas fa-database"></i>
+                            <span class="nav-text">Administration</span>
+                        </a>
+                        <ul aria-expanded="false">
+                        <li class="area_level"><a href="{{ url('staff') }}">User</a></li>
+                            <li class="area_level"><a href="{{ url('departments') }}">Department</a></li>
+                            <li class=""><a href="{{ url('designations') }}">Designation</a></li>
+                          
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

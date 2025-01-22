@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DesignationController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
@@ -154,8 +157,11 @@ Route::prefix('product')->group(function () {
     Route::delete('/{id}', [ProductController::class, 'destroy'])->name('setting.product.destroy'); // Delete product
 });
 
-});
 
+Route::resource('departments', DepartmentController::class);
+Route::resource('designations', DesignationController::class); 
+Route::resource('staff', StaffController::class);
+});
 
 
 
