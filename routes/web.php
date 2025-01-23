@@ -109,6 +109,12 @@ Route::middleware('auth')->group(function () {
     
     //PVD
     Route::get('/erp/pvd/purchase-price/index', [PurchasePriceController::class, 'index'])->name('pvd.purchase-price.index');
+    Route::get('/erp/pvd/purchase-price/create', [PurchasePriceController::class, 'create'])->name('pvd.purchase-price.create');
+    Route::post('/erp/pvd/purchase-price/store', [PurchasePriceController::class, 'store'])->name('pvd.purchase-price.store');
+    Route::get('/erp/pvd/purchase-price/edit/{id}', [PurchasePriceController::class, 'edit'])->name('pvd.purchase-price.edit');
+    Route::put('/erp/pvd/purchase-price/update/{id}', [PurchasePriceController::class, 'update'])->name('pvd.purchase-price.update');
+    Route::delete('/erp/pvd/purchase-price/destroy/{id}', [PurchasePriceController::class, 'destroy'])->name('pvd.purchase-price.destroy');
+    Route::get('/erp/pvd/purchase-price/view/{id}', [PurchasePriceController::class, 'view'])->name('pvd.purchase-price.view');
 
 
 //END MUBASHIR
