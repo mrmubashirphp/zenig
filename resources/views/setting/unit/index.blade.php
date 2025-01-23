@@ -19,7 +19,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Input Code</th>
+                                        <th>Code</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
