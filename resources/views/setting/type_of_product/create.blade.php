@@ -13,8 +13,8 @@
               <input type="text" name="name" id="name" class="form-control">
           </div>
           <div class="col-md-4 ">
-              <label for="code" class="form-label">Code</label>
-              <input type="text" name="code" id="code" class="form-control">
+              <label for="code_input" class="form-label">Code</label>
+              <input type="text" name="code_input" id="code_input" class="form-control">
           </div>
       </div>
       
