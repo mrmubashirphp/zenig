@@ -57,3 +57,4 @@ class CreateProductsTable extends Migration
     }
 }
 ;
+
