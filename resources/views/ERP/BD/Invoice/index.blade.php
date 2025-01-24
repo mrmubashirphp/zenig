@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md text-end mb-3">
-        <a class="btn btn-primary" href="{{route('pvd.purchase-price.create')}}">Create</a>
+        <a class="btn btn-primary" href="{{route('bd.invoice.create')}}">Create</a>
     </div>
 </div>
 <div class="card">
@@ -12,7 +12,7 @@
         <div class="row">
             <div class="flex justify-content-between">
                 <div class="col-md">
-                    <h4>Purchase Price</h4>
+                    <h4>Invoice List</h4>
                 </div>
             </div>
         </div>
@@ -23,39 +23,28 @@
             <thead>
                 <tr>
                     <th class="text-start" class="text-start">Sr</th>
-                    <th>Part No.</th>
-                    <th>Part Name</th>
-                    <th>Unit</th>
-                    <th class="text-start">Price/Unit (RM)</th>
-                    <th class="text-start">Effective Date</th>
-                    <th>Status</th>
+                    <th>DO No.</th>
+                    <th class="text-start">Invoice No.</th>
+                    <th>Create By</th>
+                    <th class="text-start">Created Date</th>
                     <th class="text-start">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($purchaseprices as $purchaseprice)
+                @foreach ($invoices as $invoice)
                     <tr>
                         <td class="text-start">{{$loop->iteration}}</td>
-                        <td>{{$purchaseprice->product->part_no}}</td>
-                        <td>{{$purchaseprice->product->part_name}}</td>
-                        <td>{{$purchaseprice->product->unit->name}}</td>
-                        <td class="text-start">{{$purchaseprice->price}}</td>
-                        <td class="text-start">{{$purchaseprice->date}}</td>
-                        <td>
-                            <button class="btn btn-success rounded-pill" disabled>{{$purchaseprice->status}}</button>
-                        </td>
+                        <td>{{$invoice->do_no}}</td>
+                        <td class="text-start">{{$invoice->invoice_no}}</td>
+                        <td>{{$invoice->create_by}}</td>
+                        <td class="text-start">{{$invoice->date}}</td>
                         <td class="text-start">
-                            <a href="{{route('pvd.purchase-price.edit', $purchaseprice->id)}}"
-                                class="btn btn-primary btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="{{route('pvd.purchase-price.view', $purchaseprice->id)}}"
-                                class="btn btn-success btn-xs sharp"><i class="fa fa-eye"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-danger btn-xs sharp delete-btn"
-                                data-id="{{ $purchaseprice->id }}">
+                            <a href="{{route('bd.invoice.edit',$invoice->id)}}" class="btn btn-primary btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                            <a href="{{route('bd.invoice.view',$invoice->id)}}" class="btn btn-success btn-xs sharp"><i class="fa fa-eye"></i></a>
+                            <a href="javascript:void(0);" class="btn btn-danger btn-xs sharp delete-btn" data-id="{{$invoice->id}}">
                                 <i class="fa fa-trash"></i>
                             </a>
-                            <form id="delete-form-{{ $purchaseprice->id }}"
-                                action="{{route('pvd.purchase-price.destroy', $purchaseprice->id)}}" method="POST"
-                                style="display: none;">
+                            <form id="delete-form-{{$invoice->id}}" action="{{route('bd.invoice.destroy',$invoice->id)}}" method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')
                             </form>

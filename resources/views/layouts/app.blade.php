@@ -121,7 +121,7 @@
                             <li class=""><a href="">Quotation</a></li>
                             <li class=""><a href="">Order</a></li>
                             <li class=""><a href="">Sales Price</a></li>
-                            <li class=""><a href="">Invoice</a></li>
+                            <li class=""><a href="{{route('bd.invoice.index')}}">Invoice</a></li>
                         </ul>
                     </li>
                     <li>
