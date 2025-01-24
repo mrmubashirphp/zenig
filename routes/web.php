@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
@@ -107,7 +108,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/machine/view/{id}', [MachineController::class, 'view'])->name('machine.view');
     
     
-    //PVD
+    //PVD Purchase Price
     Route::get('/erp/pvd/purchase-price/index', [PurchasePriceController::class, 'index'])->name('pvd.purchase-price.index');
     Route::get('/erp/pvd/purchase-price/create', [PurchasePriceController::class, 'create'])->name('pvd.purchase-price.create');
     Route::post('/erp/pvd/purchase-price/store', [PurchasePriceController::class, 'store'])->name('pvd.purchase-price.store');
@@ -115,6 +116,16 @@ Route::middleware('auth')->group(function () {
     Route::put('/erp/pvd/purchase-price/update/{id}', [PurchasePriceController::class, 'update'])->name('pvd.purchase-price.update');
     Route::delete('/erp/pvd/purchase-price/destroy/{id}', [PurchasePriceController::class, 'destroy'])->name('pvd.purchase-price.destroy');
     Route::get('/erp/pvd/purchase-price/view/{id}', [PurchasePriceController::class, 'view'])->name('pvd.purchase-price.view');
+    
+
+    //BD Invoice
+    Route::get('/erp/bd/invoice/index', [InvoiceController::class, 'index'])->name('bd.invoice.index');
+    Route::get('/erp/bd/invoice/create', [InvoiceController::class, 'create'])->name('bd.invoice.create');
+    Route::post('/erp/bd/invoice/store', [InvoiceController::class, 'store'])->name('bd.invoice.store');
+    Route::get('/erp/bd/invoice/edit/{id}', [InvoiceController::class, 'edit'])->name('bd.invoice.edit');
+    Route::put('/erp/bd/invoice/update/{id}', [InvoiceController::class, 'update'])->name('bd.invoice.update');
+    Route::delete('/erp/bd/invoice/destroy/{id}', [InvoiceController::class, 'destroy'])->name('bd.invoice.destroy');
+    Route::get('/erp/bd/invoice/view/{id}', [InvoiceController::class, 'view'])->name('bd.invoice.view');
 
 
 //END MUBASHIR
