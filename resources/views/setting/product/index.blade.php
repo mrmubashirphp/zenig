@@ -9,7 +9,7 @@
 
     <div class="table-responsive">
         <table class="table table-bordered" id="myTable">
-            <thead class="table-dark">
+            <thead class="">
                 <tr>
                     <th>Part No</th>
                     <th>Part Name</th>

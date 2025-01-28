@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('email')->nullable(); // Contact Person Email
             $table->string('department')->nullable(); // Contact Person Department
             $table->string('mobile_phone')->nullable(); // Contact Person Mobile Phone
+            $table->softDeletes();
 
             $table->timestamps();
         });
