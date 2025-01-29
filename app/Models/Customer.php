@@ -35,4 +35,10 @@ class Customer extends Model
     {
         // return $this->hasMany(Product::class); // Placeholder for later adjustments
     }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+    
+
 }
