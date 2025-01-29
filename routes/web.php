@@ -17,6 +17,7 @@ use App\Http\Controllers\AreaLevelController;
 use App\Http\Controllers\AreaRackController;
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\ProcessController;
+use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\TonageController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Auth;
@@ -200,6 +201,17 @@ Route::prefix('product')->group(function () {
     Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('setting.product.edit'); // Show edit product form
     Route::put('/update/{id}', [ProductController::class, 'update'])->name('setting.product.update'); // Update product
     Route::delete('/{id}', [ProductController::class, 'destroy'])->name('setting.product.destroy'); // Delete product
+});
+Route::prefix('ERP/bd/quotation')->group(function () {
+    Route::get('/create', [QuotationController::class, 'create'])->name('ERP.bd.quotation.create');
+    Route::post('/store', [QuotationController::class, 'store'])->name('ERP.bd.quotation.store');
+    Route::get('/', [QuotationController::class, 'index'])->name('ERP.bd.quotation.index'); // List all quotations
+    Route::get('/quotations/{id}', [QuotationController::class, 'show'])->name('ERP.bd.quotation.show');
+
+    Route::get('/quotations/{id}', [QuotationController::class, 'show'])->name('ERP.bd.quotation.show');
+    Route::get('/edit/{id}', [QuotationController::class, 'edit'])->name('ERP.bd.quotation.edit'); // Edit quotation
+    Route::put('/update/{id}', [QuotationController::class, 'update'])->name('ERP.bd.quotation.update');
+    Route::delete('/{id}', [QuotationController::class, 'destroy'])->name('ERP.bd.quotation.destroy'); // Delete quotation
 });
 
 
