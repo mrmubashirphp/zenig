@@ -121,12 +121,24 @@
                             <span class="nav-text">Role & Permission</span>
                         </a>
                     </li>
-                    <li><a href="{{ url('user-attachments') }}" class="" aria-expanded="false">
-                            <i class="fas fa-paperclip"></i>
-                            <span class="nav-text">User Attachment</span>
+                    <li>
+                    <a href="{{ route('staff.index') }}" class="" aria-expanded="false">
+    <i class="fas fa-paperclip"></i>
+    <span class="nav-text">User Attachment</span>
+</a>
+</li>
+<li><a href="{{ url('departments') }}" class="" aria-expanded="false">
+                            <i class="fas fa-building"></i>
+                            <span class="nav-text">Department</span>
+                        </a>
+                    </li>
+                    <li><a href="{{ url('designations') }}" class="" aria-expanded="false">
+                            <i class="fas fa-user-tie"></i>
+                            <span class="nav-text">Designation</span>
                         </a>
                     </li>
                     <li>
+
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                             <i class="fas fa-database"></i>
                             <span class="nav-text">Database</span>
@@ -244,7 +256,7 @@
                         @if (session('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session('success') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                <button type="button" class="btn-close btn btn-primary" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
                             </div>
                         @endif
@@ -289,6 +301,7 @@
     <script src="{{ asset('js/styleSwitcher.js') }}"></script>
     <script src="{{ asset('//cdn.datatables.net/2.2.1/js/dataTables.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 

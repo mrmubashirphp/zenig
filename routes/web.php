@@ -15,13 +15,16 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AreaLevelController;
 use App\Http\Controllers\AreaRackController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\TonageController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\SalePriceController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -215,11 +218,53 @@ Route::prefix('ERP/bd/quotation')->group(function () {
 });
 
 
-Route::resource('departments', DepartmentController::class);
-Route::resource('designations', DesignationController::class); 
-Route::resource('staff', StaffController::class);
+// Start  Talha Sial
+
+
+    Route::resource('departments', DepartmentController::class);
+    Route::resource('designations', DesignationController::class); 
+    Route::resource('staff', StaffController::class);
+
+// Staff Login Route
+Route::get('/staff/login', [LoginController::class, 'showLoginForm'])->name('staff.login');
+Route::post('/staff/login', [LoginController::class, 'login']);
+Route::post('/staff/logout', [LoginController::class, 'logout'])->name('staff.logout');
+
+
+// Sale Price Routes
+
+Route::get('/saleprice', [SalePriceController::class, 'index'])->name('saleprice.index');
+Route::get('/saleprice/create', [SalePriceController::class, 'create'])->name('saleprice.create');
+Route::post('/saleprice', [SalePriceController::class, 'store'])->name('saleprice.store');
+Route::get('/saleprice/{id}/edit', [SalePriceController::class, 'edit'])->name('saleprice.edit');
+Route::put('/saleprice/{salePrice}', [SalePriceController::class, 'update'])->name('saleprice.update');
+Route::delete('saleprice/{id}', [SalePriceController::class, 'destroy'])->name('saleprice.destroy');
+Route::get('saleprice/{id}', [SalePriceController::class, 'show'])->name('saleprice.show');
+Route::put('/saleprice/{salePrice}', [SalePriceController::class, 'update'])->name('saleprice.update');
+Route::get('saleprice/verify/{id}', [SalePriceController::class, 'verifyPage'])->name('saleprice.verifyPage');
+Route::post('saleprice/update-status/{id}', [SalePriceController::class, 'updateStatus'])->name('saleprice.updateStatus');
+
+// order
+
+Route::prefix('order')->name('order.')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('index');
+    
+    Route::get('/{order}', [OrderController::class, 'show'])->name('show');
+    
+    Route::get('order/create', [OrderController::class, 'create'])->name('create');
+    Route::post('/', [OrderController::class, 'store'])->name('store');
+    Route::get('/customer/{id}', [CustomerController::class, 'show']);
+
+    Route::get('/{id}/edit', [OrderController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [OrderController::class, 'update'])->name('update');
+    
+    Route::delete('/{order}', [OrderController::class, 'destroy'])->name('destroy');
+    
+    Route::get('/{order}/verify', [OrderController::class, 'verify'])->name('verify');
 });
 
+// End Talha Sial
 
 
 
+});
