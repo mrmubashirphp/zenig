@@ -71,11 +71,10 @@
     <div class="form-group col-md-3 mb-3">
     <label for="role">Role</label>
     <select class="form-control" id="role" name="role[]" multiple>
-        @foreach($role as $roles)
-            <option value="{{ $roles->id }}">
-                {{ $roles->name }}
-            </option>
-        @endforeach
+     
+ <option value="">Admin</option>
+ <option value="">User</option>
+ 
     </select>
 </div>
 

@@ -1,13 +1,13 @@
 <?php
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable; 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
 
-class Staff extends Model
+class Staff extends Authenticatable
 {
-    use HasRoles;
 
     protected $fillable = [
         'code',
@@ -29,7 +29,13 @@ class Staff extends Model
         'unpaid_leave', 'unpaid_balance', 'total_leave_days', 'charges_exceeded'
     ];
 
+    protected $hidden = [
+        'password',
+    ];
 
+    protected $casts = [
+        'password' => 'hashed', 
+    ];
 
     public function department()
     {
