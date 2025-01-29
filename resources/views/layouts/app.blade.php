@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="{{ asset('//cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css') }}">
     <link href="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css') }}"
         rel="stylesheet" />
-        <script src="{{ asset('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
-        <script src="{{ asset('https://code.jquery.com/jquery-3.6.0.min.js') }}"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 
@@ -167,9 +166,9 @@
                             <span class="nav-text">BD</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li class=""><a href="">Quotation</a></li>
-                            <li class=""><a href="{{ route('order.index') }}">Order</a></li>
-                            <li class=""><a href="{{ route('saleprice.index') }}">Sales Price</a></li>
+                            <li class=""><a href="{{route('ERP.bd.quotation.index')}}">Quotation</a></li>
+                            <li class=""><a href="">Order</a></li>
+                            <li class=""><a href="">Sales Price</a></li>
                             <li class=""><a href="">Invoice</a></li>
                         </ul>
                     </li>
@@ -251,7 +250,7 @@
 
         <div class="content-body default-height">
             <!-- Content starts here -->
-            <div class="container m-0 ">
+            <div class="container m-0">
                 <div class="row">
                     <div class="col-xl-12">
                         @if (session('success'))
@@ -304,6 +303,7 @@
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js') }}"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     @stack('scripts')
 </body>

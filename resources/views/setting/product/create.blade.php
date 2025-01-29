@@ -155,7 +155,7 @@
         </div>
 
         <div class="mt-4">
-            <button type="submit" class="btn btn-primary">Save Product</button>
+            <button type="submit" class="btn">Save Product</button>
         </div>
     </form>
 </div>

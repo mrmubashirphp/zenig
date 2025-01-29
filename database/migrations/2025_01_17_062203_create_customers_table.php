@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('pic_fax')->nullable();
             $table->string('pic_email')->nullable();
             $table->string('payment_term')->nullable();
+            $table->softDeletes();
+          
             $table->timestamps();
         });
         

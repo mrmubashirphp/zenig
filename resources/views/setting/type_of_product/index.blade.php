@@ -19,7 +19,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Input Code</th>
+                                        <th>Code</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -28,7 +28,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->code_input }}</td>
+                                            <td>{{ $item->code }}</td>
                                             <td>
                                                 <!-- View Type Of Product -->
                                                 <a href="" title="View Type Of Product">

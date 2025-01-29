@@ -47,6 +47,8 @@ class CreateProductsTable extends Migration
 
             $table->string('customer_product_code')->nullable();
             $table->boolean('have_bom')->default(0);
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }
