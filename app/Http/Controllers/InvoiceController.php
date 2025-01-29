@@ -30,7 +30,7 @@ class InvoiceController extends Controller
     public function store(Request $request){
         $request->validate([
             'do_no' => 'required',
-            'invoice_no' => 'required',
+            'invoice_no' => 'required|unique:invoices',
             'customer' => 'required',
             'date' => 'required',
             'create_by' => 'required',

@@ -2,19 +2,11 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-md text-end mb-3">
-        <a class="btn btn-primary" href="{{route('pvd.purchase-price.create')}}">Create</a>
-    </div>
-</div>
 <div class="card">
     <div class="card-header">
-        <div class="row">
-            <div class="flex justify-content-between">
-                <div class="col-md">
-                    <h4>Purchase Price</h4>
-                </div>
-            </div>
+        <h4>Puchase Price</h4>
+        <div class="text-end mb-2">
+            <a class="btn btn-primary" href="{{route('pvd.purchase-price.create')}}">Create</a>
         </div>
     </div>
 
@@ -40,16 +32,16 @@
                         <td>{{$purchaseprice->product->part_name}}</td>
                         <td>{{$purchaseprice->product->unit->name}}</td>
                         <td class="text-start">{{$purchaseprice->price}}</td>
-                        <td class="text-start">{{$purchaseprice->date}}</td>
+                        <td class="text-start">{{ \Carbon\Carbon::parse($purchaseprice->date)->format('d-m-Y') }}</td>
                         <td>
-                            <button class="btn btn-success rounded-pill" disabled>{{$purchaseprice->status}}</button>
+                            <button class="btn btn-success btn-xs rounded-pill" disabled>{{$purchaseprice->status}}</button>
                         </td>
                         <td class="text-start">
                             <a href="{{route('pvd.purchase-price.edit', $purchaseprice->id)}}"
-                                class="btn btn-primary btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                                class="btn btn-primary btn-sm sharp me-1"><i class="fas fa-pencil-alt"></i></a>
                             <a href="{{route('pvd.purchase-price.view', $purchaseprice->id)}}"
-                                class="btn btn-success btn-xs sharp"><i class="fa fa-eye"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-danger btn-xs sharp delete-btn"
+                                class="btn btn-success btn-sm sharp"><i class="fa fa-eye"></i></a>
+                            <a href="javascript:void(0);" class="btn btn-danger btn-sm sharp delete-btn"
                                 data-id="{{ $purchaseprice->id }}">
                                 <i class="fa fa-trash"></i>
                             </a>

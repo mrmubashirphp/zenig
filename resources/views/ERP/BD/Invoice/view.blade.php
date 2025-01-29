@@ -141,13 +141,13 @@
             </div>
 
 
-            <div class="row mt-5 mb-3 text-end">
+            <!-- <div class="row mt-5 mb-3 text-end">
                 <div class="col-md">
                     <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal" disabled>
                         Product
                     </button>
                 </div>
-            </div>
+            </div> -->
 
             <!-- The Modal -->
             <div class="modal fade" id="myModal">
@@ -207,8 +207,7 @@
                                     <th>Part Name</th>
                                     <th>Unit</th>
                                     <th>Quantity</th>
-                                    <th>Unit Price</th>
-                                    <th class="text-start">Action</th>
+                                    <th class="text-start">Unit Price</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -221,9 +220,8 @@
                                         <td>{{$detail->product->unit->name ?? ''}}</td>
                                         <td><input class="form-control" type="number" value="{{$detail->quantity ?? 1}}"
                                                 name="products[{{$detail->product->id ?? ''}}][quantity]" disabled></td>
-                                        <td><input class="form-control" type="number" value="{{$detail->unit_price ?? 1}}"
+                                        <td class="text-start"><input class="form-control" type="number" value="{{$detail->unit_price ?? 1}}"
                                                 name="products[{{$detail->product->id ?? ''}}][unit_price]" disabled></td>
-                                        <td><button class="btn btn-danger remove-row" disabled>Remove</button></td>
                                     </tr>
                                 @endforeach
                             </tbody>

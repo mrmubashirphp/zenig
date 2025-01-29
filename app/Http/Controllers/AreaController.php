@@ -16,7 +16,7 @@ class AreaController extends Controller
         return view('area.index', ['areas' => $areas]);
     }
     public function create()
-    {
+    {  
         $area_racks = AreaRack::select('id', 'name', 'code')->get();
         return view('area.create', ['area_racks' => $area_racks]);
     }
