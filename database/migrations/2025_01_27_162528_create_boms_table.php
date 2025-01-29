@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('purchase_prices', function (Blueprint $table) {
+        Schema::create('boms', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->string('price');
-            $table->date('date');
-            $table->enum('status',['pending','verified','request']);
+            $table->string('kanban_no');
+            $table->date('created_date');
+            $table->string('created_by');
+            $table->string('part_weight');
+            $table->string('customer');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('purchase_prices');
+        Schema::dropIfExists('boms');
     }
 };
