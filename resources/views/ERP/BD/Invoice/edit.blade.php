@@ -164,10 +164,10 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <table class="table table-bordered" id="myTable">
+                            <table class="table table-bordered" id="myModalTable">
                                 <thead>
                                     <tr>
-                                        <th><input type="checkbox" class="form-check-input" name="main" id="main"></th>
+                                        <th><input type="checkbox" class="form-check-input main" name="main" id="main"></th>
                                         <th>Part No.</th>
                                         <th>Part Name</th>
                                         <th class="text-start">Unit</th>
@@ -206,6 +206,7 @@
                         <table class="table table-bordered" id="outerTable">
                             <thead>
                                 <tr>
+                                    <th>Sr No.</th>
                                     <th>Part No.</th>
                                     <th>Part Name</th>
                                     <th>Unit</th>
@@ -217,6 +218,7 @@
                             <tbody>
                                 @foreach ($invoice->invoice_detail as $detail)
                                     <tr data-index="{{$loop->iteration}}">
+                                        <td>{{$loop->iteration}}</td>
                                         <td>{{$detail->product->part_no ?? ''}}<input
                                                 name="products[{{$detail->product->id ?? ''}}][product_id]" type="hidden"
                                                 value="{{$detail->product->id ?? ''}}" /></td>
@@ -226,7 +228,8 @@
                                                 name="products[{{$detail->product->id ?? ''}}][quantity]"></td>
                                         <td><input class="form-control" type="number" value="{{$detail->unit_price ?? 1}}"
                                                 name="products[{{$detail->product->id ?? ''}}][unit_price]"></td>
-                                        <td><button class="btn btn-danger remove-row">Remove</button></td>
+                                        <td class="text-start"><button class="btn btn-danger remove-row"><i class="fa fa-trash"></i></button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -258,115 +261,81 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>
             $(document).ready(function () {
-                $('.do_no').select2();
-                $('.customer').select2();
 
-                let outerTable = new DataTable('#outerTable');
-
-                let modalTable = new DataTable('#myTable', {
+                let outerTable = $('#outerTable').DataTable();
+                let modalTable = $('#myModalTable').DataTable({
                     columnDefs: [
-                        { targets: [0], orderable: false }
+                        { targets: [0], orderable: false },
                     ]
                 });
 
-                $('#main').on('click', function () {
-                    var mainCheck = $('#main');
-                    var bodycheck = $('.bodycheck');
-                    var mainChecked = mainCheck.prop('checked');
-
-                    bodycheck.prop('checked', mainChecked);
-
-                })
-
-                $('.bodycheck').on('click', function () {
-                    var mainCheck = $('#main');
-                    var bodycheck = $('.bodycheck');
-                    var mainChecked = true;
-
-                    bodycheck.each(function () {
-                        if (!$(this).prop('checked')) {
-                            mainChecked = false;
-                            return false;
-                        }
-                    });
-
-                    mainCheck.prop('checked', mainChecked);
-                })
-
-
-
-                $('#myModal .modal-footer .btn-dark').on('click', function () {
-                    let mainTableBody = $('#outerTable tbody');
-
-                    $('#myModal .table tbody tr').each(function (index) {
-                        let checkbox = $(this).find('input[type="checkbox"]');
-
-                        if (checkbox.is(':checked')) {
-                            let product_part_no = $(this).find('td:eq(1)').text();
-                            let product_part_name = $(this).find('td:eq(2)').text();
-                            let product_unit_name = $(this).find('td:eq(3)').text();
-
-                            mainTableBody.append(`
-                                                <tr data-index="${index}" data-product_part_no="${product_part_no}" data-product_part_name="${product_part_name}" data-product_unit_name="${product_unit_name}">
-                                                    <td>${product_part_no}<input name="products[${checkbox.val()}][product_id]" type="hidden" value="${checkbox.val()}"/></td>
-                                                    <td>${product_part_name}</td>
-                                                    <td>${product_unit_name}</td>
-                                                    <td><input class="form-control" type="number" name="products[${checkbox.val()}][quantity]"></td>
-                                                    <td><input class="form-control" type="number" name="products[${checkbox.val()}][unit_price]"></td>
-                                                    <td class='text-start'><button type='button' class="btn btn-danger remove-row">Remove</button></td>
-                                                </tr>
-                                            `);
-
-
-                            $(this).remove();
-                        }
-                    });
-
-
-                    $('#main').prop('checked', false);
-
-                    $('#myModal').modal('hide');
+                $('.main').on('click', function () {
+                    let isChecked = $(this).prop('checked');
+                    $('.bodycheck').prop('checked', isChecked);
                 });
 
 
+                $(document).on('click', '.bodycheck', function () {
+                    let allChecked = $('.bodycheck:checked').length === $('.bodycheck').length;
+                    $('.main').prop('checked', allChecked);
+                });
+
+                $('#myModal .modal-footer .btn-dark').on('click', function () {
+                    modalTable.rows().every(function () {
+                        let row = this.node();
+                        let checkbox = $(row).find('input[type="checkbox"]');
+
+                        if (checkbox.is(':checked')) {
+                            let serialNo = outerTable.rows().count() + 1;
+                            let product_part_no = $(row).find('td:eq(1)').text().trim();
+                            let product_part_name = $(row).find('td:eq(2)').text().trim();
+                            let product_unit_name = $(row).find('td:eq(3)').text().trim();
+
+                            outerTable.row.add([
+                                `<span class="text-start">${serialNo}</span>`,
+                                `${product_part_no}<input name="products[${checkbox.val()}][product_id]" type="hidden" value="${checkbox.val()}"/>`,
+                                `${product_part_name}`,
+                                `${product_unit_name}`,
+                                `<input class="form-control" type="number" name="products[${checkbox.val()}][quantity]">`,
+                                `<input class="form-control" type="number" name="products[${checkbox.val()}][unit_price]">`,
+                                `<button type='button' class="btn btn-danger remove-row"><i class="fa fa-trash"></i></button>`
+                            ]).draw(false);
+
+                            modalTable.row(this).remove().draw(false);
+                        }
+                    });
+
+                    $('.main').prop('checked', false);
+                    $('#myModal').modal('hide');
+                });
+
+                function updateSerialNumbers() {
+                    $('#outerTable tbody tr').each(function (index) {
+                        let serialNo = index + 1;
+                        $(this).find('td:eq(0)').text(serialNo);
+                    });
+                }
 
 
                 $(document).on('click', '.remove-row', function () {
                     let row = $(this).closest('tr');
 
-                    let product_part_no = row.find('td:eq(0)').text();
-                    let product_part_name = row.find('td:eq(1)').text();
-                    let product_unit_name = row.find('td:eq(2)').text();
-                    let rowIndex = row.data('index');
+                    let rowData = outerTable.row(row).data();
+                    outerTable.row(row).remove().draw(false);
 
+                    let product_part_no = rowData[1].split('<input')[0].trim();
+                    let product_part_name = rowData[2].trim();
+                    let product_unit_name = rowData[3].trim();
+                    let checkboxVal = rowData[1].match(/value="(\d+)"/)[1];
 
-                    let modalRow = $(`
-                                <tr data-index="${rowIndex}">
-                                    <td><input class="form-check-input" type="checkbox" name="bodycheck"></td>
-                                    <td>${product_part_no}</td>
-                                    <td>${product_part_name}</td>
-                                    <td class="text-start">${product_unit_name}</td>
-                                </tr>
-                            `);
+                    modalTable.row.add([
+                        `<input class="form-check-input bodycheck" type="checkbox" value="${checkboxVal}" name="main">`,
+                        product_part_no,
+                        product_part_name,
+                        `<span class="text-start">${product_unit_name}</span>`
+                    ]).draw(false);
 
-
-                    let modalTableBody = $('#myModal .table tbody');
-                    let inserted = false;
-
-                    modalTableBody.find('tr').each(function () {
-                        if (parseInt($(this).data('index')) > rowIndex) {
-                            modalRow.insertBefore($(this));
-                            inserted = true;
-                            return false;
-                        }
-                    });
-
-                    if (!inserted) {
-                        modalTableBody.append(modalRow);
-                    }
-
-
-                    row.remove();
+                    updateSerialNumbers();
                 });
 
                 $('.customer').on('change', function () {
@@ -376,11 +345,7 @@
                     $('#tel').val(selectedOption.data('phone_no') || '');
                     $('#fax').val(selectedOption.data('pic_fax') || '');
                 });
-
-
             });
 
-
         </script>
-
     @endpush

@@ -1,20 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="row">
-    <div class="col-md text-end mb-3">
-        <a class="btn btn-primary" href="{{route('bd.invoice.create')}}">Create</a>
-    </div>
-</div>
 <div class="card">
     <div class="card-header">
-        <div class="row">
-            <div class="flex justify-content-between">
-                <div class="col-md">
-                    <h4>Invoice List</h4>
-                </div>
-            </div>
+
+        <h4>Invoice List</h4>
+        <div class="text-end mb-2">
+            <a class="btn btn-primary" href="{{route('bd.invoice.create')}}">Create</a>
         </div>
     </div>
 
@@ -37,14 +29,18 @@
                         <td>{{$invoice->do_no}}</td>
                         <td class="text-start">{{$invoice->invoice_no}}</td>
                         <td>{{$invoice->create_by}}</td>
-                        <td class="text-start">{{$invoice->date}}</td>
+                        <td class="text-start">{{ \Carbon\Carbon::parse($invoice->date)->format('d-m-Y') }}</td>
                         <td class="text-start">
-                            <a href="{{route('bd.invoice.edit',$invoice->id)}}" class="btn btn-primary btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="{{route('bd.invoice.view',$invoice->id)}}" class="btn btn-success btn-xs sharp"><i class="fa fa-eye"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-danger btn-xs sharp delete-btn" data-id="{{$invoice->id}}">
+                            <a href="{{route('bd.invoice.edit', $invoice->id)}}"
+                                class="btn btn-primary btn-sm sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                            <a href="{{route('bd.invoice.view', $invoice->id)}}" class="btn btn-success btn-sm sharp"><i
+                                    class="fa fa-eye"></i></a>
+                            <a href="javascript:void(0);" class="btn btn-danger btn-sm sharp delete-btn"
+                                data-id="{{$invoice->id}}">
                                 <i class="fa fa-trash"></i>
                             </a>
-                            <form id="delete-form-{{$invoice->id}}" action="{{route('bd.invoice.destroy',$invoice->id)}}" method="POST" style="display: none;">
+                            <form id="delete-form-{{$invoice->id}}" action="{{route('bd.invoice.destroy', $invoice->id)}}"
+                                method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')
                             </form>

@@ -114,7 +114,7 @@
                     <h5 class="m-0 ps-4 py-2 bg-primary">ERP</h5>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-solid fa-file-lines"></i>
                             <span class="nav-text">BD</span>
                         </a>
                         <ul aria-expanded="false">
@@ -126,7 +126,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                        <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-cart-shopping"></i>
                             <span class="nav-text">PVD</span>
                         </a>
                         <ul aria-expanded="false">
@@ -143,7 +143,7 @@
                     <h5 class="m-0 ps-4 py-2 bg-primary">MES</h5>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-solid fa-chart-line"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
                         <ul aria-expanded="false">
@@ -153,17 +153,17 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-solid fa-e"></i>
                             <span class="nav-text">Engineering</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li class=""><a href="">BOM</a></li>
+                            <li class=""><a href="{{route('engineering.bom.index')}}">BOM</a></li>
                             <li class=""><a href="">BOM Report</a></li>
                         </ul>
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-solid fa-table-cells-large"></i>
                             <span class="nav-text">PPC</span>
                         </a>
                         <ul aria-expanded="false">
@@ -174,7 +174,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-solid fa-box"></i>
                             <span class="nav-text">Production</span>
                         </a>
                         <ul aria-expanded="false">
@@ -185,7 +185,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-solid fa-calendar"></i>
                             <span class="nav-text">OEE</span>
                         </a>
                         <ul aria-expanded="false">
@@ -198,7 +198,7 @@
                     <h5 class="m-0 ps-4 py-2 bg-primary">WMS</h5>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-solid fa-chart-line"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
                         <ul aria-expanded="false">
@@ -208,7 +208,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-solid fa-industry"></i>
                             <span class="nav-text">Warehouse</span>
                         </a>
                         <ul aria-expanded="false">
@@ -227,7 +227,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-regular fa-address-card"></i>
                             <span class="nav-text">Report</span>
                         </a>
                         <ul aria-expanded="false">
@@ -242,7 +242,7 @@
                     <h5 class="m-0 ps-4 py-2 bg-primary">Setting</h5>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-solid fa-user-lock"></i>
                             <span class="nav-text">Administration</span>
                         </a>
                         <ul aria-expanded="false">
@@ -276,7 +276,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-solid fa-gear"></i>
                             <span class="nav-text">General Setting</span>
                         </a>
                         <ul aria-expanded="false">
@@ -289,7 +289,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i>
+                            <i class="fa-solid fa-bell"></i>
                             <span class="nav-text">Notification</span>
                         </a>
                         <ul aria-expanded="false">
@@ -303,43 +303,40 @@
 
         <div class="content-body default-height">
             <!-- Content starts here -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        @if (session('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ session('success') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @endif
-                        @if (session('error'))
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                {{ session('error') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @endif
+            <div class="container m-0 mt-3">
 
-                        @if ($errors && count($errors) > 0)
-                            <div class="alert alert-danger" role="alert">
-                                @foreach ($errors->all() as $error)
-                                    <ul>
-                                        <li>{{ $loop->iteration }} : {!! $error !!}</li>
-                                    </ul>
-                                @endforeach
-                            </div>
-                        @endif
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        @yield('content')
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                </div>
+                @endif
+
+                @if ($errors && count($errors) > 0)
+                    <div class="alert alert-danger" role="alert">
+                        @foreach ($errors->all() as $error)
+                            <ul>
+                                <li>{{ $loop->iteration }} : {!! $error !!}</li>
+                            </ul>
+                        @endforeach
+                    </div>
+                @endif
+
+
+                @yield('content')
+
             </div>
+
         </div>
     </div>
 
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="{{ asset('assets/js/plugins/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/global/global.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
@@ -352,6 +349,8 @@
     <script src="{{ asset('js/styleSwitcher.js') }}"></script>
     <script src="{{ asset('//cdn.datatables.net/2.2.1/js/dataTables.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
 
 
     @stack('scripts')
