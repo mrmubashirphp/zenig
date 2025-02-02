@@ -3,6 +3,7 @@
 use App\Http\Controllers\BomController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
+use App\Http\Controllers\GeneralSettingController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CategoryController;
@@ -142,6 +143,16 @@ Route::middleware('auth')->group(function () {
     // Route::delete('engineering/bom/destroy/{id}', [BomController::class, 'destroy'])->name('engineering.bom.destroy');
     // Route::get('engineering/bom/view/{id}', [BomController::class, 'view'])->name('engineering.invoice.view');
 
+
+
+
+    //General Setting
+    Route::get('general-setting/create',[GeneralSettingController::class, 'create'])->name('general.setting.create');
+    Route::post('general-setting/sst_percentage_store',[GeneralSettingController::class, 'sst_percentage_store'])->name('general.setting.sst_percentage_store');
+    Route::post('general-setting/po_important_note_store',[GeneralSettingController::class, 'po_important_note_store'])->name('general.setting.po_important_note_store');
+    Route::post('general-setting/spec_break_store',[GeneralSettingController::class, 'spec_break_store'])->name('general.setting.spec_break_store');
+    Route::post('general-setting/initial_ref_no_store',[GeneralSettingController::class, 'initial_ref_no_store'])->name('general.setting.initial_ref_no_store');
+    Route::post('general-setting/pr_approval_store',[GeneralSettingController::class, 'pr_approval_store'])->name('general.setting.pr_approval_store');
 
 //END MUBASHIR
 

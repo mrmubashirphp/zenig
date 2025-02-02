@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="{{ asset('//cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css') }}">
     <link href="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css') }}"
         rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 
@@ -88,9 +87,8 @@
                                     @else
                                         <a href="{{ route('login') }}" class="dropdown-item ai-icon">
                                             <svg id="icon-login" xmlns="http://www.w3.org/2000/svg" class="text-primary"
-                                                width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
+                                                width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M12 21v-6"></path>
                                                 <polyline points="19 14 12 21 5 14"></polyline>
                                                 <line x1="12" y1="3" x2="12" y2="15"></line>
@@ -107,38 +105,155 @@
                 </nav>
             </div>
         </div>
-     
+
         <div class="dlabnav">
             <div class="dlabnav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li><a href="{{ url('/home') }}" class="" aria-expanded="false">
-                            <i class="fas fa-home"></i>
+                    <!-- ERP -->
+
+                    <h5 class="m-0 ps-4 py-2 bg-primary">ERP</h5>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-solid fa-file-lines"></i>
+                            <span class="nav-text">BD</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="{{route('ERP.bd.quotation.index')}}">Quotation</a></li>
+                            <li class=""><a href="">Order</a></li>
+                            <li class=""><a href="">Sales Price</a></li>
+                            <li class=""><a href="{{route('bd.invoice.index')}}">Invoice</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="nav-text">PVD</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="{{route('pvd.purchase-price.index')}}">Purchase Price</a></li>
+                            <li class=""><a href="">Purchase Planning</a></li>
+                            <li class=""><a href="">Purchase Requisition</a></li>
+                            <li class=""><a href="">Purchase Order</a></li>
+                            <li class=""><a href="">Purchase Ranking List</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- MES -->
+
+                    <h5 class="m-0 ps-4 py-2 bg-primary">MES</h5>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-solid fa-chart-line"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
-                    </li>
-                    <li><a href="{{ url('roles-permissions') }}" class="" aria-expanded="false">
-                            <i class="fas fa-lock"></i>
-                            <span class="nav-text">Role & Permission</span>
-                        </a>
-                    </li>
-                    <li>
-                    <a href="{{ route('staff.index') }}" class="" aria-expanded="false">
-    <i class="fas fa-paperclip"></i>
-    <span class="nav-text">User Attachment</span>
-</a>
-</li>
-<li><a href="{{ url('departments') }}" class="" aria-expanded="false">
-                            <i class="fas fa-building"></i>
-                            <span class="nav-text">Department</span>
-                        </a>
-                    </li>
-                    <li><a href="{{ url('designations') }}" class="" aria-expanded="false">
-                            <i class="fas fa-user-tie"></i>
-                            <span class="nav-text">Designation</span>
-                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">Machine Status</a></li>
+                            <li class=""><a href="">Shopfloor</a></li>
+                        </ul>
                     </li>
                     <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-solid fa-e"></i>
+                            <span class="nav-text">Engineering</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="{{route('engineering.bom.index')}}">BOM</a></li>
+                            <li class=""><a href="">BOM Report</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-solid fa-table-cells-large"></i>
+                            <span class="nav-text">PPC</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">Monthly Production Planning</a></li>
+                            <li class=""><a href="">Daily Production Planning</a></li>
+                            <li class=""><a href="">Scheduling</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-solid fa-box"></i>
+                            <span class="nav-text">Production</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">Monthly Production Output</a></li>
+                            <li class=""><a href="">Summary Report</a></li>
+                            <li class=""><a href="">Call for Assistance</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-solid fa-calendar"></i>
+                            <span class="nav-text">OEE</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">OEE Report</a></li>
+                        </ul>
+                    </li>
 
+                    <!--WMS -->
+
+                    <h5 class="m-0 ps-4 py-2 bg-primary">WMS</h5>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">Inventory Dashboard</a></li>
+                            <li class=""><a href="">Inventory Shopfloor</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-solid fa-industry"></i>
+                            <span class="nav-text">Warehouse</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">Delivery Instruction</a></li>
+                            <li class=""><a href="">Good Receiving</a></li>
+                            <li class=""><a href="">Material Requisition</a></li>
+                            <li class=""><a href="">Transfer Request</a></li>
+                            <li class=""><a href="">Discrepancy</a></li>
+                            <li class=""><a href="">Stock Adjustment</a></li>
+                            <li class=""><a href="">Stock Relocation</a></li>
+                            <li class=""><a href="">Product Reordering</a></li>
+                            <li class=""><a href="">Outgoing</a></li>
+                            <li class=""><a href="">Sales Return</a></li>
+                            <li class=""><a href="">Purchase Return</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-regular fa-address-card"></i>
+                            <span class="nav-text">Report</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">Inventory Report</a></li>
+                            <li class=""><a href="">Stock Card Report</a></li>
+                            <li class=""><a href="">Summary DO Report</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Setting -->
+
+                    <h5 class="m-0 ps-4 py-2 bg-primary">Setting</h5>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-solid fa-user-lock"></i>
+                            <span class="nav-text">Administration</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li class=""><a href="">User Registration</a></li>
+                            <li class=""><a href="">Role And Permission</a></li>
+                            <li class=""><a href="">Department</a></li>
+                            <li class=""><a href="">Designation</a></li>
+                            <li class=""><a href="">Inventory Shopfloor</a></li>
+                        </ul>
+                    </li>
+                    <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                             <i class="fas fa-database"></i>
                             <span class="nav-text">Database</span>
@@ -147,7 +262,7 @@
                             <li class="area_level"><a href="{{ route('area.level.index') }}">Area Level</a></li>
                             <li class=""><a href="{{ route('area.rack.index') }}">Area Rack</a></li>
                             <li class=""><a href="{{ route('area.index') }}">Area</a></li>
-                            <li class=""><a href="{{ route('type.index') }}">Type</a></li>
+                            <li class=""><a href="{{ route('type.index') }}">Type of Rejection</a></li>
                             <li class=""><a href="{{ route('process.index') }}">Process</a></li>
                             <li class=""><a href="{{ route('tonage.index') }}">Tonage</a></li>
                             <li class=""><a href="{{ route('machine.index') }}">Machine</a></li>
@@ -159,90 +274,16 @@
                             <li><a href="{{ route('setting.type_of_product.index') }}">Type of Product</a></li>
                         </ul>
                     </li>
-                    <h5 class="m-0 ps-4 py-2 bg-primary">ERP</h5>
+                        <a href="{{route('general.setting.create')}}" class="me-2"><i class="fa-solid fa-gear me-3 fs-20"></i> General Setting</a>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i> 
-                            <span class="nav-text">BD</span>
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="nav-text">Notification</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li class=""><a href="{{route('ERP.bd.quotation.index')}}">Quotation</a></li>
-                            <li class=""><a href="">Order</a></li>
-                            <li class=""><a href="">Sales Price</a></li>
-                            <li class=""><a href="">Invoice</a></li>
+                            <li class=""><a href="">User</a></li>
+                            <li class=""><a href="">Logout</a></li>
                         </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i> 
-                            <span class="nav-text">PVD</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li class=""><a href="{{route('pvd.purchase-price.index')}}">Purchase Price</a></li>
-                            <li class=""><a href="">Purchase Planning</a></li>
-                            <li class=""><a href="">Purchase Requisition</a></li>
-                            <li class=""><a href="">Purchase Order</a></li>
-                            <li class=""><a href="">Purchase Ranking List</a></li>
-                        </ul>
-                    </li>
-                    <h5 class="m-0 ps-4 py-2 bg-primary">MES</h5>
-                    <li>
-                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i> 
-                            <span class="nav-text">Dashboard</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li class=""><a href="">Machine Status</a></li>
-                            <li class=""><a href="">Shopfloor</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i> 
-                            <span class="nav-text">Engineering</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li class=""><a href="">BOM</a></li>
-                            <li class=""><a href="">BOM Report</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i> 
-                            <span class="nav-text">PPC</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li class=""><a href="">Monthly Production Planning</a></li>
-                            <li class=""><a href="">Daily Production Planning</a></li>
-                            <li class=""><a href="">Scheduling</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i> 
-                            <span class="nav-text">Production</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li class=""><a href="">Monthly Production Output</a></li>
-                            <li class=""><a href="">Summary Report</a></li>
-                            <li class=""><a href="">Call for Assistance</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i> 
-                            <span class="nav-text">OEE</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li class=""><a href="">OEE Report</a></li>
-                        </ul>
-                    </li>
-                    <h5 class="m-0 ps-4 py-2 bg-primary">WMS</h5>
-                    <li>
-                        <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class=""></i> 
-                            <span class="nav-text">Dashboard</span>
-                        </a>
                     </li>
                 </ul>
             </div>
@@ -250,45 +291,40 @@
 
         <div class="content-body default-height">
             <!-- Content starts here -->
-            <div class="container m-0">
-                <div class="row">
-                    <div class="col-xl-12">
-                        @if (session('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ session('success') }}
-                                <button type="button" class="btn-close btn btn-primary" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            </div>
-                        @endif
-                        @if (session('error'))
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                {{ session('error') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            </div>
-                        @endif
+            <div class="container px-0 mt-3">
 
-                        @if ($errors && count($errors) > 0)
-                            <div class="alert alert-danger" role="alert">
-                                @foreach ($errors->all() as $error)
-                                    <ul>
-                                        <li>{{ $loop->iteration }} : {!! $error !!}</li>
-                                    </ul>
-                                @endforeach
-                            </div>
-                        @endif
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        @yield('content')
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                </div>
+                @endif
+
+                @if ($errors && count($errors) > 0)
+                    <div class="alert alert-danger" role="alert">
+                        @foreach ($errors->all() as $error)
+                            <ul>
+                                <li>{{ $loop->iteration }} : {!! $error !!}</li>
+                            </ul>
+                        @endforeach
+                    </div>
+                @endif
+
+
+                @yield('content')
+
             </div>
+
         </div>
     </div>
 
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="{{ asset('assets/js/plugins/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/global/global.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
@@ -301,9 +337,9 @@
     <script src="{{ asset('js/styleSwitcher.js') }}"></script>
     <script src="{{ asset('//cdn.datatables.net/2.2.1/js/dataTables.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
-    <script src="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
     @stack('scripts')
 </body>

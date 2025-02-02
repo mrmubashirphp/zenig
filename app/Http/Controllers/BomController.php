@@ -72,13 +72,18 @@ class BomController extends Controller
             }
         }
 
-        $bom_process = new BomProcess();
-        $bom_process->process_id = $request->process_name ?? ''; 
-        $bom_process->bom_id = $bom->id ?? ''; 
-        $bom_process->process_no = $request->process_no ?? ''; 
-        $bom_process->material_purchase =json_encode($request->material_purchase) ?? []; 
-        $bom_process->circuit_kanban =json_encode($request->circuit_kanban) ?? []; 
-        $bom_process->save();
+        if ($request->has('process_name')) {
+            foreach ($request->process_name as $index => $processId) {
+                $bom_process = new BomProcess();
+                $bom_process->process_id = $processId; 
+                $bom_process->bom_id = $bom->id ?? ''; 
+                $bom_process->process_no = json_encode($request->process_no); 
+                $bom_process->material_purchase = json_encode($request->material_purchase) ?? []; 
+                $bom_process->circuit_kanban = json_encode($request->circuit_kanban) ?? []; 
+                $bom_process->save();
+            }
+        }
+        
 
         return redirect(route('engineering.bom.index'))->with('success', 'Bom has been added successfully!');
     }

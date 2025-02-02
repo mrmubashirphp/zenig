@@ -576,7 +576,7 @@
                     // Add new row
                     let newRow = process_table.row.add([
                         `<span class="text-start">${serialNo}</span>`,
-                        `<select class="form-select process_id" name="process_name">
+                        `<select class="form-select process_id" name="process_name[]">
                             @foreach ($processes as $process)
                                 <option value="{{$process->id}}">{{$process->name}}</option>
                             @endforeach
