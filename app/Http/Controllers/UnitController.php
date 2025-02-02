@@ -26,8 +26,15 @@ class UnitController extends Controller
   
     public function store(Request $request): RedirectResponse
     {
-        $input = $request->all();
-        Unit::create($input);
+        $request->validate([
+            'name' => 'required',
+            'code' => 'required'
+       ]);
+
+       $type_of_products = new Unit;
+       $type_of_products->name = $request->name;
+       $type_of_products->code_input = $request->code;
+       $type_of_products->save();
         return redirect('unit')->with('flash_message', 'unit Addedd!');
     }
 

@@ -26,9 +26,16 @@ class TypeOfProductController extends Controller
   
     public function store(Request $request): RedirectResponse
     {
-        $input = $request->all();
-        TypeOfProduct::create($input);
-        return redirect('type_of_product')->with('flash_message', 'type_of_product Addedd!');
+       $request->validate([
+            'name' => 'required',
+            'code' => 'required'
+       ]);
+
+       $type_of_products = new TypeOfProduct;
+       $type_of_products->name = $request->name;
+       $type_of_products->code_input = $request->code;
+       $type_of_products->save();
+        return redirect('type_of_product')->with('success', 'type of product Added!');
     }
 
   

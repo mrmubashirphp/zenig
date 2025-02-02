@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('email', 255)->unique(); 
             $table->string('password', 255);
             $table->foreignId('department_id')->constrained()->onDelete('cascade');
-            $table->foreignId('designation_id')->constrained()->onDelete('cascade');
-            $table->string('role')->default('user');
+            $table->longText('role'); 
             $table->boolean('is_active')->default(false); 
             $table->timestamps(); 
         });
