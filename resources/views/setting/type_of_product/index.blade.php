@@ -28,7 +28,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->code }}</td>
+                                            <td>{{ $item->code_input }}</td>
                                             <td>
                                                 <!-- View Type Of Product -->
                                                 <a href="" title="View Type Of Product">

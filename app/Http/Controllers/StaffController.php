@@ -7,7 +7,6 @@ use App\Models\PersonalData;
 use App\Models\FamilyData;
 use App\Models\BankData;
 use App\Models\More;
-use App\Models\Role;
 use App\Models\Department;
 use App\Models\Designation;
 use Illuminate\Http\Request;
@@ -15,19 +14,18 @@ use Illuminate\Support\Facades\Hash;
 
 class StaffController extends Controller
 {
-   public function index()
-{
-    $staff = Staff::all();  
-    return view('staff.index', compact('staff'));  
-}
-
+    public function index()
+    {
+        $staff = Staff::all(); 
+        return view('staff.index', compact('staff'));
+    }
 
     public function create()
 {
     $departments = Department::all(); 
     $designations = Designation::all(); 
-    $role = Role::orderBy('name','ASC')->get();
-    return view('staff.create', compact('departments', 'designations','role'));
+    // $role = Role::orderBy('name','ASC')->get();
+    return view('staff.create', compact('departments', 'designations'));
 }
 
 public function store(Request $request)
@@ -41,8 +39,7 @@ public function store(Request $request)
         'department' => 'required|exists:departments,id',
         'designation' => 'required|exists:designations,id',
         'is_active' => 'sometimes|boolean',
-        'role' => 'required|array', // Ensure roles are an array
-        'role.*' => 'exists:roles,name', // Validate each role
+       
     ]);
 
     // Create staff
@@ -57,12 +54,10 @@ public function store(Request $request)
         'is_active' => $validatedData['is_active'] ?? false,
     ]);
 
-    // Assign roles to the staff
     if (!empty($validatedData['role'])) {
-        $staff->assignRole($validatedData['role']); // Use Spatie's assignRole method
+        $staff->assignRole($validatedData['role']);
     }
 
-    // Save personal data
     if ($request->has('gender')) {
         $staff->personalData()->create([
             'gender' => $request->input('gender'),
@@ -138,10 +133,8 @@ public function store(Request $request)
 public function edit($id)
 {
     $staff = Staff::findOrFail($id);
-    $roles = Role::all(); 
-    $selectedRoles = $staff->roles->pluck('id')->toArray(); 
 
-    return view('staff.edit', compact('staff', 'roles', 'selectedRoles'));
+    return view('staff.edit', compact('staff'));
 }
 
 
@@ -216,7 +209,6 @@ public function update(Request $request, $id)
         'charges_exceeded' => 'nullable',
     ]);
 
-    // Find the staff member by ID
     $staff = Staff::findOrFail($id);
 
     // Update staff data
@@ -303,7 +295,6 @@ public function update(Request $request, $id)
         ]);
     }
 
-    // Redirect with success message
     return redirect()->route('staff.index')->with('success', 'Staff updated successfully!');
 }
 
@@ -313,5 +304,13 @@ public function show($id)
     return view('staff.show', compact('staff'));
 }
 
+public function destroy($id)
+{
+    $staff = Staff::find($id);
+
+    $staff->delete();
+
+   
+}
 
 }

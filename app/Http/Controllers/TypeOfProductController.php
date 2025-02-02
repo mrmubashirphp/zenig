@@ -33,7 +33,7 @@ class TypeOfProductController extends Controller
 
        $type_of_products = new TypeOfProduct;
        $type_of_products->name = $request->name;
-       $type_of_products->code = $request->code;
+       $type_of_products->code_input = $request->code;
        $type_of_products->save();
         return redirect('type_of_product')->with('success', 'type of product Added!');
     }
